@@ -35,6 +35,9 @@ struct evp_cipher_st;
 typedef struct evp_cipher_st EVP_CIPHER;
 #endif
 
+void initKey(const shared_ptr<SSLKey> &key, const EVP_CIPHER *_blockCipher,
+             const EVP_CIPHER *_streamCipher, int _keySize);
+
 /*
     Implements Cipher interface for OpenSSL's ciphers.
 

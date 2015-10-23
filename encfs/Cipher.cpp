@@ -33,6 +33,7 @@
 #include "NullCipher.h"
 #include "Range.h"
 #include "SSL_Cipher.h"
+#include "SSL_FLAK_Cipher.h"
 #include "base64.h"
 
 using namespace std;
@@ -44,6 +45,7 @@ using namespace rel;
 static void AddSymbolReferences() {
   REF_MODULE(SSL_Cipher)
   REF_MODULE(NullCipher)
+  REF_MODULE(SSL_FLAK_Cipher)
 }
 
 struct CipherAlg {

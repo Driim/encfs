@@ -130,8 +130,8 @@ set(SOURCE_FILES
   encfs/readpassphrase.cpp
   encfs/SSL_Cipher.cpp
   encfs/StreamNameIO.cpp
-)
-add_library(encfs SHARED ${SOURCE_FILES})
+        encfs/SSL_FLAK_Cipher.cpp encfs/SSL_FLAK_Cipher.h)
+add_library(encfs SHARED ${SOURCE_FILES} encfs/SSL_FLAK_Cipher.cpp encfs/SSL_FLAK_Cipher.h)
 set_property(TARGET encfs PROPERTY VERSION ${ENCFS_VERSION})
 set_property(TARGET encfs PROPERTY SOVERSION ${ENCFS_SOVERSION})
 target_link_libraries(encfs
@@ -146,16 +146,16 @@ install (TARGETS encfs DESTINATION lib)
 # Set RPATH to library install path.
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
-add_executable (encfs-bin encfs/main.cpp)
+add_executable (encfs-bin encfs/main.cpp encfs/SSL_FLAK_Cipher.cpp encfs/SSL_FLAK_Cipher.h)
 target_link_libraries (encfs-bin encfs)
 set_target_properties (encfs-bin PROPERTIES OUTPUT_NAME "encfs")
 install (TARGETS encfs-bin DESTINATION bin)
 
-add_executable (encfsctl encfs/encfsctl.cpp)
+add_executable (encfsctl encfs/encfsctl.cpp encfs/SSL_FLAK_Cipher.cpp encfs/SSL_FLAK_Cipher.h)
 target_link_libraries (encfsctl encfs)
 install (TARGETS encfsctl DESTINATION bin)
 
-add_executable (makekey encfs/makeKey.cpp)
+add_executable (makekey encfs/makeKey.cpp encfs/SSL_FLAK_Cipher.cpp encfs/SSL_FLAK_Cipher.h)
 target_link_libraries (makekey encfs)
 
 add_executable (checkops encfs/test.cpp)
